@@ -15,9 +15,17 @@ pub fn render_verification_key(vk: &VerificationKey<Bn256, PlonkCsWidth4WithNext
     render_verification_key_from_template(vk, &template, render_to_path);
 }
 
-pub fn render_verification_key_from_default_template(vk: &VerificationKey<Bn256, PlonkCsWidth4WithNextStepParams>, render_to_path: &str) {
-    let template = include_str!("../template.sol");
+pub fn render_verification_key_from_default_template(vk: &VerificationKey<Bn256, PlonkCsWidth4WithNextStepParams>, render_to_path: &str, plonk4verifier_alone: bool) {
+    let mut template = include_str!("../template.sol");
+    if plonk4verifier_alone {
+        template = include_str!("../template_without_pair.sol");
+    }
     render_verification_key_from_template(vk, template, render_to_path);
+    if plonk4verifier_alone {
+        template = include_str!("../plonk4verifier.sol");
+        let p4f_render_path = std::path::Path::new(render_to_path).parent().unwrap().to_str().unwrap();
+        render_verification_key_from_template(vk, template, p4f_render_path);
+    }
 }
 
 pub fn render_verification_key_from_template(vk: &VerificationKey<Bn256, PlonkCsWidth4WithNextStepParams>, template: &str, render_to_path: &str) {
