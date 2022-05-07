@@ -24,6 +24,7 @@ pub fn render_verification_key_from_default_template(vk: &VerificationKey<Bn256,
     if plonk4verifier_alone {
         template = include_str!("../plonk4verifier.sol");
         let p4f_render_path = std::path::Path::new(render_to_path).parent().unwrap().to_str().unwrap();
+        println!("for test {}", p4f_render_path);
         render_verification_key_from_template(vk, template, p4f_render_path);
     }
 }
