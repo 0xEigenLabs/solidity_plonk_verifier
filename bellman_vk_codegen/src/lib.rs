@@ -22,9 +22,9 @@ pub fn render_verification_key_from_default_template(vk: &VerificationKey<Bn256,
     }
     render_verification_key_from_template(vk, template, render_to_path);
     if plonk4verifier_alone {
-        template = include_str!("../plonk4verifier.sol");
+        template = include_str!("../plonkit.sol");
         let p4f_render_path = std::path::Path::new(render_to_path).parent().unwrap()
-            .join("plonk4verifier.sol");
+            .join("plonkit.sol");
         let p4f_render_filename = p4f_render_path.as_path().to_str().unwrap();
         render_verification_key_from_template(vk, template, p4f_render_filename);
     }
