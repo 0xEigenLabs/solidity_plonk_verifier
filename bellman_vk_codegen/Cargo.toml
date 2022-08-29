@@ -5,7 +5,7 @@ authors = ["Alex Vlasov <alex.m.vlasov@gmail.com>", "Haoyu Lin <chris.haoyul@gma
 edition = "2018"
 
 [dependencies]
-bellman_ce = { git = "https://github.com/matter-labs/bellman", branch = "beta", default-features = false, features = ["plonk"] } # active features depend on build type
+bellman_ce = { git = "https://github.com/0xEigenLabs/bellman", branch = "beta", default-features = false, features = ["plonk"] } # active features depend on build type
 handlebars = "3.*"
 hex = "*"
 serde_json = "1.*"
